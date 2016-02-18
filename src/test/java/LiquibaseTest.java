@@ -46,8 +46,8 @@ public class LiquibaseTest {
 
 			Set<UniqueConstraint> uniqueConstraints = diffResult.getMissingObjects(UniqueConstraint.class);
 
+			Assertions.assertThat(uniqueConstraints).hasSize(1);
 			UniqueConstraint uniqueConstraint = uniqueConstraints.iterator().next();
-
 			Assertions.assertThat(uniqueConstraint.getColumns())
 				.extracting(Column::getName)
 				.containsExactly(
